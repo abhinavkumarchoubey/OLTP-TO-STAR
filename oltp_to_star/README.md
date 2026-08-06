@@ -16,7 +16,7 @@ oltp-to-star/
 ├── models/
 │   └── staging/
 │       ├── stg_*.sql        # One staging view per source table
-│       └── src_pagila.yml   # Source definition + not_null/unique tests
+│       └── src_public.yml   # Source definition + not_null/unique tests
 ├── dbt_project.yml           # dbt project config (name: oltp_to_star)
 └── README.md
 ```
@@ -65,7 +65,7 @@ oltp-to-star/
 
 - Docker Compose setup for Postgres 15, loaded with the Pagila dataset.
 - Staging layer: every source table has a corresponding `stg_*.sql` model, materialized as a **view**.
-- Source tables are referenced using dbt's `source()` function, defined in `src_pagila.yml`, pointing to the `public` schema in the `pagila` database.
+- Source tables are referenced using dbt's `source()` function, defined in `src_public.yml`, pointing to the `public` schema in the `pagila` database.
 - Data tests added on all staging models: `not_null` and `unique` tests on primary key columns.
 
 ## Running the Project
