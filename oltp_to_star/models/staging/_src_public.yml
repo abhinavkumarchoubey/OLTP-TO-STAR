@@ -16,6 +16,13 @@ sources:
             tests:
               - unique
               - not_null
+          - name: city_id
+            tests:
+              - not_null
+              - relationships:
+                  arguments:
+                    to: ref('stg_city')
+                    field: city_id
       - name: category
         columns:
           - name: category_id
@@ -28,6 +35,13 @@ sources:
             tests:
               - unique
               - not_null
+          - name: country_id
+            tests:
+              - not_null
+              - relationships:
+                  arguments:
+                    to: ref('stg_country')
+                    field: country_id
       - name: country
         columns:
           - name: country_id
@@ -40,14 +54,36 @@ sources:
             tests:
               - unique
               - not_null
+          - name: store_id
+            tests:
+              - not_null
+              - relationships:
+                  arguments:
+                    to: ref('stg_store')
+                    field: store_id
+          - name: address_id
+            tests:  
+              - not_null
+              - relationships:
+                  arguments:
+                    to: ref('stg_address')
+                    field: address_id
       - name: film_actor
         columns:
           - name: actor_id
             tests:
               - not_null
+              - relationships:
+                  arguments:
+                    to: ref('stg_actors')
+                    field: actor_id
           - name: film_id
             tests:
               - not_null
+              - relationships:
+                  arguments:
+                    to: ref('stg_film_category')
+                    field: film_id
       - name: film_category
         columns:
           - name: film_id
@@ -57,12 +93,30 @@ sources:
           - name: category_id
             tests:
               - not_null
+              - relationships:
+                  arguments:
+                      to: ref('stg_category')
+                      field: category_id
       - name: inventory
         columns:
           - name: inventory_id
             tests:
               - unique
               - not_null
+          - name: film_id
+            tests:
+              - not_null
+              - relationships:
+                  arguments:
+                    to: ref('stg_film_category')
+                    field: film_id
+          - name: store_id
+            tests:
+              - not_null
+              - relationships:
+                  arguments:
+                    to: ref('stg_store')
+                    field: store_id
       - name: language
         columns:
           - name: language_id
@@ -75,21 +129,84 @@ sources:
             tests:
               - unique
               - not_null
+          - name: customer_id
+            tests:
+              - not_null
+              - relationships:
+                  arguments:
+                    to: ref('stg_customers')
+                    field: customer_id
+          - name: staff_id
+            tests:  
+              - not_null
+              - relationships:
+                  arguments:
+                    to: ref('stg_staff')
+                    field: staff_id
+          - name: rental_id
+            tests:
+              - not_null
+              - relationships:  
+                  arguments:
+                    to: ref('stg_rental')
+                    field: rental_id
       - name: rental  
         columns:
           - name: rental_id
             tests:
               - unique
               - not_null  
+          - name: inventory_id
+            tests:
+              - not_null
+              - relationships:
+                  arguments:
+                    to: ref ('stg_inventory')
+                    field: inventory_id
+          - name: customer_id
+            tests:
+              - not_null
+              - relationships:
+                  arguments:
+                    to: ref('stg_customers')
+                    field: customer_id
+          - name: staff_id
+            tests:  
+              - not_null
+              - relationships:
+                  arguments:
+                    to: ref('stg_staff')
+                    field: staff_id
       - name: staff
         columns:
           - name: staff_id
             tests:
               - unique
               - not_null
+          - name: address_id
+            tests:
+              - not_null
+              - relationships:
+                  arguments:
+                    to: ref('stg_address')
+                    field: address_id
+          - name: store_id
+            tests:  
+              - not_null
+              - relationships:
+                  arguments:
+                    to: ref('stg_store')
+                    field: store_id
       - name: store
         columns:  
           - name: store_id
             tests:
               - unique
               - not_null
+          - name: address_id
+            tests:
+              - not_null
+              - relationships:
+                  arguments:
+                    to: ref('stg_address')
+                    field: address_id
