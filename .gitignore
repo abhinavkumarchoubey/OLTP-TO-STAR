@@ -1,0 +1,10 @@
+.venv/
+logs/
+.env
+dbt_packages/
+target/
+
+# IDE
+.vscode/
+.idea/
+*.swp
