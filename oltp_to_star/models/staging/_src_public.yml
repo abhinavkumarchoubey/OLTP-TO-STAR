@@ -68,6 +68,19 @@ sources:
                   arguments:
                     to: ref('stg_address')
                     field: address_id
+      - name: film
+        columns:
+          - name: film_id
+            tests:
+              - unique
+              - not_null
+          - name: language_id
+            tests:
+              - not_null
+              - relationships:
+                  arguments:
+                    to: ref('stg_language')
+                    field: language_id
       - name: film_actor
         columns:
           - name: actor_id
@@ -134,7 +147,7 @@ sources:
               - not_null
               - relationships:
                   arguments:
-                    to: ref('stg_customers')
+                    to: ref('stg_customer')
                     field: customer_id
           - name: staff_id
             tests:  
@@ -168,7 +181,7 @@ sources:
               - not_null
               - relationships:
                   arguments:
-                    to: ref('stg_customers')
+                    to: ref('stg_customer')
                     field: customer_id
           - name: staff_id
             tests:  
