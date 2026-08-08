@@ -1,4 +1,4 @@
 SELECT
     language_id,
-    name
+    name language_name
 FROM {{ source('public', 'language') }}

@@ -1,6 +1,6 @@
 WITH customer as
 (
-    SELECT * FROM {{ ref('stg_customers')}}
+    SELECT * FROM {{ ref('stg_customer')}}
 ),
 address as
 (
@@ -19,14 +19,15 @@ final as
     SELECT
         {{ dbt_utils.generate_surrogate_key(['c.customer_id']) }} as customer_key,
         c.customer_id,
-        c.first_name,
-        c.last_name,
-        c.email,
+        c.customer_first_name,
+        c.customer_last_name,
+        c.customer_email,
         a.address_id,
-        a.address,
+        a.address_line1,
+        a.address_line2,
         a.postal_code,
-        ci.city,
-        co.country,
+        ci.city_name,
+        co.country_name,
         c.create_date
     FROM customer c
     LEFT JOIN address a ON c.address_id = a.address_id

@@ -19,18 +19,18 @@ final as
     SELECT
         {{ dbt_utils.generate_surrogate_key(['st.staff_id']) }} as staff_key,
         st.staff_id,
-        st.first_name,
-        st.last_name,
+        st.staff_first_name,
+        st.staff_last_name,
         st.address_id,
-        a.address,
+        a.address_line1,
+        a.address_line2,
         a.postal_code,
-        c.city,
-        co.country,
-        st.email,
+        c.city_name,
+        co.country_name,
+        st.staff_email,
         st.store_id,
         st.active,
-        st.username,
-        st.last_update
+        st.staff_username
     FROM staffs st  
     LEFT JOIN addresses a ON st.address_id = a.address_id
     LEFT JOIN cities c ON a.city_id = c.city_id

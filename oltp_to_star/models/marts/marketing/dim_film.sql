@@ -19,16 +19,16 @@ final as
     SELECT
         {{ dbt_utils.generate_surrogate_key(['f.film_id']) }} as film_key,
         f.film_id,
-        f.title,
-        f.description,
-        f.release_year,
-        l.name as language,
-        c.name as category,
+        f.film_title,
+        f.film_description,
+        f.film_release_year,
+        l.language_name as language,
+        c.category_name as category,
         f.rental_duration,
         f.rental_rate,
-        f.length,
+        f.film_length,
         f.replacement_cost,
-        f.rating,
+        f.film_rating,
         f.special_features,
         f.last_update
     FROM films f

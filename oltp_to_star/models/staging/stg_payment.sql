@@ -3,6 +3,6 @@ SELECT
     customer_id,
     staff_id,
     rental_id,
-    amount,
+    amount as payment_amount,
     payment_date
 FROM {{ source('public', 'payment') }}
