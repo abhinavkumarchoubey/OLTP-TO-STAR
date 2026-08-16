@@ -50,12 +50,8 @@ models:
           - not_null
       - name: film_description
         description: "Description of the film."
-      - name: release_year
+      - name: film_release_year
         description: "Year the film was released."
-      - name: language_id
-        description: "Foreign key to the language dimension."
-        tests:
-          - not_null
       - name: rental_duration
         description: "Duration for which the film can be rented."
       - name: rental_rate
@@ -110,10 +106,6 @@ models:
         description: "Indicates whether the staff member is currently active."  
       - name: staff_username
         description: "Username for the staff member."
-      - name: last_update
-        description: "The date and time when the staff record was last updated."
-        tests:
-          - not_null
 
   - name: dim_store
     description: "This table contains store information for marketing purposes."
@@ -143,7 +135,3 @@ models:
         description: "Store's country."
       - name: manager_name
         description: "Full name of the store manager."
-      - name: last_update
-        description: "The date and time when the store record was last updated."
-        tests:
-          - not_null

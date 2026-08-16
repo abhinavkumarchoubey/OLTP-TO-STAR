@@ -7,5 +7,8 @@ SELECT
     address_id,
     activebool as active_bool,
     create_date,
-    last_update
-FROM {{ source('public', 'customer') }}
+    last_update,
+    dbt_valid_from,
+    dbt_valid_to,
+    CASE WHEN dbt_valid_to IS NULL THEN TRUE ELSE FALSE END AS is_current
+FROM {{ ref('customer_snapshot') }}

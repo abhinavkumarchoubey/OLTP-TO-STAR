@@ -17,7 +17,7 @@ countries as
 final as
 (
     SELECT
-        {{ dbt_utils.generate_surrogate_key(['c.customer_id']) }} as customer_key,
+        {{ dbt_utils.generate_surrogate_key(['c.customer_id', 'c.dbt_valid_from']) }} as customer_key,
         c.customer_id,
         c.customer_first_name,
         c.customer_last_name,

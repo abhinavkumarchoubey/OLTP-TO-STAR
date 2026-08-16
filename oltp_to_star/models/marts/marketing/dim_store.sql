@@ -4,7 +4,7 @@ WITH stores as
 ),
 addresses as
 (
-    SELECT * FROM {{ ref('stg_address')}}
+    SELECT * FROM {{ ref('stg_address')}} WHERE is_current = TRUE
 ),
 cities as
 (   

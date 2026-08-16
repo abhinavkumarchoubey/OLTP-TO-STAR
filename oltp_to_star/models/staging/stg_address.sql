@@ -6,5 +6,8 @@ SELECT
     city_id,
     postal_code,
     phone,
-    last_update
-from {{ source('public', 'address') }}
+    last_update,
+    dbt_valid_from,
+    dbt_valid_to,
+    CASE WHEN dbt_valid_to IS NULL THEN TRUE ELSE FALSE END AS is_current
+from {{ ref('address_snapshot') }}
